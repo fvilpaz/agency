@@ -1,5 +1,6 @@
 from pathlib import Path
-from fastapi import FastAPI, Request, Form
+import sqlite3
+from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import FileResponse, JSONResponse
@@ -7,6 +8,35 @@ from pydantic import BaseModel, EmailStr
 from typing import List
 
 BASE_DIR = Path(__file__).parent
+DB_PATH = BASE_DIR / "leads.db"
+
+
+def init_db():
+    conn = sqlite3.connect(DB_PATH)
+    conn.execute(
+        """
+        CREATE TABLE IF NOT EXISTS leads (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nombre TEXT,
+            apellidos TEXT,
+            negocio TEXT,
+            ciudad TEXT,
+            email TEXT,
+            telefono TEXT,
+            tipo TEXT,
+            momento TEXT,
+            mejoras TEXT,
+            mensaje TEXT,
+            privacidad INTEGER,
+            created_at TEXT DEFAULT (datetime('now'))
+        )
+        """
+    )
+    conn.commit()
+    conn.close()
+
+
+init_db()
 
 app = FastAPI(title="QREA'S Agency")
 
@@ -15,16 +45,16 @@ templates = Jinja2Templates(directory=BASE_DIR / "templates")
 
 class ContactForm(BaseModel):
     nombre: str
-    apellidos: str
+    apellidos: str | None = None
     negocio: str
-    ciudad: str
+    ciudad: str | None = None
     email: EmailStr
-    telefono: str
-    tipo_negocio: str
-    momento_proyecto: str
-    mejoras: List[str]
-    mensaje: str
-    privacidad: bool
+    telefono: str | None = None
+    tipo: str | None = None
+    momento: str | None = None
+    mejoras: List[str] = []
+    mensaje: str | None = None
+    privacidad: bool = False
 
 @app.get("/")
 async def home(request: Request):
@@ -48,8 +78,25 @@ async def contacto(request: Request):
 
 @app.post("/contacto")
 async def submit_contacto(form: ContactForm):
-    # TODO: conectar a CRM / email cuando se confirme la herramienta
-    print(f"[Lead] {form.nombre} {form.apellidos} <{form.email}> — {form.negocio}")
+    conn = sqlite3.connect(DB_PATH)
+    conn.execute(
+        "INSERT INTO leads (nombre, apellidos, negocio, ciudad, email, telefono, tipo, momento, mejoras, mensaje, privacidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        (
+            form.nombre,
+            form.apellidos,
+            form.negocio,
+            form.ciudad,
+            form.email,
+            form.telefono,
+            form.tipo,
+            form.momento,
+            ", ".join(form.mejoras),
+            form.mensaje,
+            int(form.privacidad),
+        ),
+    )
+    conn.commit()
+    conn.close()
     return JSONResponse({"ok": True, "message": "Gracias. Hemos recibido tu solicitud y te contactaremos en breve."})
 
 @app.get("/politica-de-privacidad")
