@@ -71,7 +71,7 @@ ul{list-style:none}
   border-radius: 50%; position: fixed;
   top: 0; left: 0; transform: translate(-50%, -50%);
   pointer-events: none; z-index: 9999;
-  transition: transform 0.2s, background-color 0.2s, border 0.2s;
+  transition: background-color 0.2s, border 0.2s;
 }
 .cursor-outline {
   width: 40px; height: 40px;
@@ -79,7 +79,7 @@ ul{list-style:none}
   border-radius: 50%; position: fixed;
   top: 0; left: 0; transform: translate(-50%, -50%);
   pointer-events: none; z-index: 9998;
-  transition: transform 0.2s, background-color 0.2s;
+  transition: background-color 0.2s;
 }
 body.has-custom-cursor,
 body.has-custom-cursor a,

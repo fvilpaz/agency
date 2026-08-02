@@ -144,31 +144,49 @@
   var cursorOutline = document.querySelector('.cursor-outline');
   if (cursorDot && cursorOutline && window.matchMedia("(pointer: fine)").matches) {
     document.body.classList.add('has-custom-cursor');
+    var tx = 0, ty = 0, ox = 0, oy = 0, scale = 1, dotScale = 1;
+    var ease = reduceMotion ? 1 : 0.18;
+    var raf = null;
+
+    function tick() {
+      var dx = tx - ox, dy = ty - oy;
+      ox += dx * ease;
+      oy += dy * ease;
+      cursorOutline.style.transform = 'translate(-50%, -50%) translate(' + ox + 'px,' + oy + 'px) scale(' + scale + ')';
+      cursorDot.style.transform = 'translate(-50%, -50%) translate(' + tx + 'px,' + ty + 'px) scale(' + dotScale + ')';
+      if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) {
+        raf = null;
+      } else {
+        raf = requestAnimationFrame(tick);
+      }
+    }
+
+    function start() {
+      if (!raf) raf = requestAnimationFrame(tick);
+    }
+
     window.addEventListener('mousemove', function(e) {
-      cursorDot.style.left = e.clientX + 'px';
-      cursorDot.style.top = e.clientY + 'px';
-      
-      // Añadimos un pequeño delay al outline usando setTimeout para un efecto más fluido
-      setTimeout(function() {
-        cursorOutline.style.left = e.clientX + 'px';
-        cursorOutline.style.top = e.clientY + 'px';
-      }, 50);
-    });
+      tx = e.clientX;
+      ty = e.clientY;
+      start();
+    }, { passive: true });
 
     document.querySelectorAll('a, button, input, textarea, select').forEach(function(el) {
       el.addEventListener('mouseenter', function() {
-        cursorDot.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        scale = 1.5;
+        dotScale = 1.5;
         cursorDot.style.backgroundColor = 'transparent';
         cursorDot.style.border = '1px solid var(--gold)';
-        cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
         cursorOutline.style.backgroundColor = 'rgba(181, 150, 91, 0.15)';
+        start();
       });
       el.addEventListener('mouseleave', function() {
-        cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+        scale = 1;
+        dotScale = 1;
         cursorDot.style.backgroundColor = 'var(--gold)';
         cursorDot.style.border = 'none';
-        cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
         cursorOutline.style.backgroundColor = 'transparent';
+        start();
       });
     });
   }
