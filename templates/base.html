@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}QREA'S Agency | Consultoría 360º para hostelería{% endblock %}</title>
+{% block meta_description %}<meta name="description" content="Estrategia, operativa, branding y tecnología para bares, restaurantes, cafeterías y proyectos gastronómicos. Diseñamos e implantamos soluciones reales.">{% endblock %}
+<meta name="theme-color" content="#0D0D0D">
+<link rel="canonical" href="https://www.qreasagency.com{{ request.url.path }}">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="QREA'S Agency">
+<meta property="og:title" content="QREA'S Agency | Consultoría 360º para hostelería">
+<meta property="og:description" content="Estrategia, operativa, branding y tecnología para hostelería. Diseñamos e implantamos mejoras reales.">
+<meta property="og:image" content="/static/img/og-image.jpg">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/static/img/favicon-64.png">
+<link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
+
+<!-- Fuentes -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/static/css/styles.css">
+
+<!-- Datos estructurados: rellenar campos legales cuando se confirmen -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ProfessionalService",
+  "name":"QREA'S Agency",
+  "description":"Consultoría 360º para hostelería: estrategia, operativa, branding y tecnología.",
+  "url":"https://www.qreasagency.com/",
+  "image":"https://www.qreasagency.com/assets/img/og-image.jpg",
+  "areaServed":"ES",
+  "knowsAbout":["consultoría de hostelería","gestión de restaurantes","branding para restaurantes","ERP para hostelería","automatización","inteligencia artificial"]
+}
+</script>
+</head>
+<body>
+<!-- Custom Cursor -->
+<div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
+
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<!-- ============================= HEADER ============================= -->
+<header class="header" id="header">
+  <div class="wrap header__inner">
+    <a class="brand" href="/" aria-label="QREA'S Agency — inicio">
+      <img class="logo-main" src="/static/img/logo-stacked.png" alt="QREA'S Agency">
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navegación principal">
+      <a class="nav__link" href="/">Inicio</a>
+      <a class="nav__link" href="/servicios">Servicios</a>
+      <a class="nav__link" href="/metodo">Método</a>
+      <a class="nav__link" href="/tecnologia-hosteleria">Soluciones digitales</a>
+      <a class="nav__link" href="/contacto">Contacto</a>
+      <a class="btn btn--gold" href="/contacto">Agenda una reunión</a>
+    </nav>
+
+    <div class="header__cta">
+      <a class="btn btn--gold" href="/contacto">Agenda una reunión</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú de navegación" aria-controls="nav" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" role="main">
+{% block content %}
+{% endblock %}
+</main>
+
+<!-- ============================= FOOTER ============================= -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="/static/img/logo-stacked.png" alt="QREA'S Agency">
+        <p>Estrategia, operativa, branding y tecnología para hostelería. Diseñamos e implantamos mejoras reales.</p>
+        <p class="footer__eco">QREA'S Agency forma parte de un ecosistema más amplio junto a Q·REAS Tech.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="/servicios">Servicios</a></li>
+          <li><a href="/metodo">Método</a></li>
+          <li><a href="/tecnologia-hosteleria">Soluciones digitales</a></li>
+          <li><a href="/contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contacto</h4>
+        <ul>
+          <li class="tag-placeholder">[Teléfono pendiente]</li>
+          <li class="tag-placeholder">[Email pendiente]</li>
+          <li class="tag-placeholder">[Ciudad / zona pendiente]</li>
+          <li class="tag-placeholder">[Instagram · LinkedIn pendiente]</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year"></span> QREA'S Agency. Todos los derechos reservados.</span>
+      <span>
+        <a href="/aviso-legal">Aviso legal</a> ·
+        <a href="/politica-de-privacidad">Privacidad</a> ·
+        <a href="/politica-de-cookies">Cookies</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp flotante: añadir clase is-active y href real cuando exista número corporativo -->
+<a class="wa-float" id="waFloat" href="#" aria-label="Hablar por WhatsApp" rel="noopener" target="_blank" style="display: none;">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.515 5.26l-.999 3.648 3.484-.755z"/></svg>
+</a>
+
+<script src="/static/js/main.js" defer></script>
+</body>
+</html>
