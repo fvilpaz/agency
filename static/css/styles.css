@@ -206,6 +206,7 @@ p{color:var(--light)}
 .hero__diamond{
   position:absolute;right:-7%;top:50%;transform:translateY(-50%);
   width:min(56vw,580px);opacity:.06;
+  animation:hero-diamond-spin 36s linear infinite;
 }
 .hero__grid{position:relative;z-index:1;display:grid;grid-template-columns:1.18fr .82fr;gap:clamp(2.5rem,5vw,4.5rem);align-items:center}
 .hero__copy h1{margin-block:.2rem .4rem}
@@ -223,10 +224,19 @@ p{color:var(--light)}
 }
 @media (min-width: 881px) { .hero__card { margin-left: -50px; z-index: 10; } }
 .hero__card::before{content:"";position:absolute;inset:14px;border:1px solid rgba(181,150,91,.12);border-radius:4px;pointer-events:none}
-.hero__card img{width:66%;filter:drop-shadow(0 10px 26px rgba(0,0,0,.5))}
+.hero__card img{width:66%;filter:drop-shadow(0 10px 26px rgba(0,0,0,.5));animation:hero-logo-float 5.5s ease-in-out infinite}
 .hero__badge{
   position:absolute;bottom:16px;left:50%;transform:translateX(-50%);
   font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted-2);white-space:nowrap;font-weight:500;
+}
+
+@keyframes hero-diamond-spin{
+  from{transform:translateY(-50%) rotate(0deg)}
+  to{transform:translateY(-50%) rotate(360deg)}
+}
+@keyframes hero-logo-float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-20px)}
 }
 
 /* ===================================================================
@@ -438,6 +448,7 @@ img:not(.logo-main):not(.brand__mark):not(.brand__word) {
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1!important;transform:none!important;transition:none}
   .btn:hover{transform:none}
+  .hero__diamond,.hero__card img{animation:none}
 }
 
 /* skip link */
@@ -512,3 +523,52 @@ img:not(.logo-main):not(.brand__mark):not(.brand__word) {
   .svc-detail{grid-template-columns:1fr;gap:1.3rem}
   .feature-list{columns:1}
 }
+
+/* ---------- Tarifas (acordeón por segmento) ---------- */
+.tiers{display:grid;gap:.7rem}
+.tier-acc{border:1px solid var(--line-soft);border-radius:var(--radius);background:var(--panel-2);overflow:hidden}
+.tier-acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:1rem;padding:1.05rem 1.2rem}
+.tier-acc summary::-webkit-details-marker{display:none}
+.tier-acc__head{font-family:var(--font-body);font-size:.95rem;color:var(--white);font-weight:600}
+.tier-acc__name{display:flex;align-items:center;gap:.7rem;flex:1;min-width:0}
+.tier-acc__price{font-family:var(--font-body);font-size:.8rem;color:var(--gold-text);white-space:nowrap}
+.tier-acc__chev{width:18px;height:18px;flex:0 0 auto;color:var(--gold);transition:transform .3s var(--ease)}
+.tier-acc[open] .tier-acc__chev{transform:rotate(180deg)}
+.tier-acc[open] summary{border-bottom:1px solid var(--line-soft)}
+.tier-acc__body{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-soft)}
+.tier-card{padding:1.3rem 1.3rem 1.5rem;background:var(--panel)}
+.tier-card__top{display:flex;align-items:center;gap:.55rem;margin-bottom:1rem}
+.tier-card__top h3{font-size:1rem;flex:1}
+.tier-dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+.tier-dot--green{background:#4CAF7D}
+.tier-dot--blue{background:var(--tech-blue)}
+.tier-dot--gold{background:var(--gold)}
+.tier-card__price{font-family:var(--font-body);font-size:.82rem;font-weight:600;color:var(--gold-text);white-space:nowrap}
+.tier-card__base{font-size:.8rem;color:var(--muted);margin-bottom:.7rem}
+.tier-card__list li{display:flex;gap:.6rem;align-items:flex-start;font-size:.86rem;color:#cfcdc6;padding-block:.28rem;line-height:1.5}
+.tier-card__list li .rhomb{margin-top:.5rem}
+
+/* Servicios individuales */
+.individual{margin-top:clamp(2.6rem,5vw,3.6rem);border-top:1px solid var(--line-soft);padding-top:clamp(2rem,4vw,2.8rem)}
+.individual__list{margin-top:1.4rem;display:grid;grid-template-columns:1fr;max-width:760px}
+.individual__list li{display:flex;align-items:center;gap:.8rem;padding-block:.55rem;border-bottom:1px dashed var(--line-soft);font-size:.92rem;color:#cfcdc6}
+.individual__list li b{margin-left:auto;color:var(--gold-text);font-weight:600;font-size:.86rem;white-space:nowrap}
+@media (max-width:820px){
+  .tier-acc__body{grid-template-columns:1fr}
+  .tier-acc__head{flex-wrap:wrap}
+}
+
+/* ---------- Proyectos / casos de éxito ---------- */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft)}
+.case{background:var(--panel-2);padding:clamp(1.6rem,3vw,2.2rem);display:flex;flex-direction:column}
+.case__tag{font-family:var(--font-body);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-text);margin-bottom:1rem}
+.case__title{font-size:clamp(1.15rem,1.8vw,1.4rem);margin-bottom:.7rem}
+.case__role{font-size:.8rem;color:var(--muted);margin-bottom:1.2rem}
+.case__text{font-size:.9rem;color:#cfcdc6;line-height:1.65;flex:1}
+.case__result{margin-top:1.3rem;display:flex;flex-direction:column;gap:.4rem}
+.case__metric{font-family:var(--font-display);font-size:1.6rem;font-weight:600;color:var(--gold-text);letter-spacing:-.02em}
+.case__metric small{display:block;font-family:var(--font-body);font-size:.78rem;font-weight:500;color:var(--muted);letter-spacing:.01em;line-height:1.4}
+@media (max-width:880px){.cases{grid-template-columns:1fr}}
+.case-note{margin-top:1.6rem;font-size:.78rem;color:var(--muted-2);border-left:2px solid var(--line);padding-left:1rem}
+.cases-teaser__inner{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.cases-teaser__inner .lead{max-width:56ch}

@@ -42,7 +42,7 @@
     <h1>Web corporativa — Backlog</h1>
     <p class="meta">Qué estamos haciendo, qué está hecho y qué falta.</p>
     <div class="stats">
-      <div class="stat"><div class="n">8</div><div class="l">Hecho</div></div>
+      <div class="stat"><div class="n">13</div><div class="l">Hecho</div></div>
       <div class="stat"><div class="n">8</div><div class="l">Pendiente</div></div>
     </div>
   </header>
@@ -56,24 +56,29 @@
     <li><span class="chk done"></span><span class="txt">Vulnerabilidades limpiadas (4 CVEs del audit)</span><span class="tag done">done</span></li>
     <li><span class="chk done"></span><span class="txt">Docker listo para producción</span><span class="tag done">done</span></li>
     <li><span class="chk done"></span><span class="txt">Cursor custom suavizado (rAF + reduced-motion)</span><span class="tag done">done</span></li>
+    <li><span class="chk done"></span><span class="txt">Tests automáticos del formulario de contacto — 8/8 pasando (pytest + httpx)</span><span class="tag done">done</span></li>
+    <li><span class="chk done"></span><span class="txt">Auditoría re-corrida: gitleaks OK, trivy 0 CVEs (jinja2→3.1.6), bandit limpio, semgrep limpio</span><span class="tag done">done</span></li>
     <li><span class="chk done"></span><span class="txt">Despliegue con Cloudflare Tunnel verificado y funcionando</span><span class="tag done">done</span></li>
+    <li><span class="chk done"></span><span class="txt">Análisis del modelo de negocio documentado (13 documentos, 6 modelos de negocio)</span><span class="tag done">docs</span></li>
+    <li><span class="chk done"></span><span class="txt">Tarifas completas publicadas en /servicios (8 segmentos × 3 niveles + individuales)</span><span class="tag done">web</span></li>
+    <li><span class="chk done"></span><span class="txt">Página /proyectos con casos de éxito reales (The Top, El Kazurro, El Patioh)</span><span class="tag done">web</span></li>
   </ul>
 
   <h2>Pendiente ◍</h2>
   <ul>
     <li><span class="chk"></span><span class="txt">Rellenar datos de contacto: teléfono, email, ciudad, redes (footer)</span><span class="tag todo">contacto</span></li>
     <li><span class="chk"></span><span class="txt">Activar botón de WhatsApp con número real</span><span class="tag todo">contacto</span></li>
+    <li><span class="chk"></span><span class="txt">Confirmar con Lau cifras exactas y permiso de publicación de los casos de éxito — el PDF fuente está corrupto</span><span class="tag todo">casos</span></li>
+    <li><span class="chk"></span><span class="txt">Email corporativo hola@qreasagency.com (Workspace/Zoho) cuando haya dominio; qreas.agency@gmail.com ya creada</span><span class="tag todo">contacto</span></li>
     <li><span class="chk"></span><span class="txt">Subir a VPS + dominio + HTTPS (qreasagency.com)</span><span class="tag todo">deploy</span></li>
-    <li><span class="chk"></span><span class="txt">Re-correr auditoría completa (gitleaks ya funciona con git)</span><span class="tag todo">calidad</span></li>
-    <li><span class="chk"></span><span class="txt">Tests automáticos para el formulario de contacto</span><span class="tag todo">calidad</span></li>
     <li><span class="chk"></span><span class="txt">Enviar sitemap a Google Search Console</span><span class="tag todo">seo</span></li>
     <li><span class="chk"></span><span class="txt">Migrar leads de SQLite al CRM / ERP QreasTech</span><span class="tag todo">crm</span></li>
-    <li><span class="chk"></span><span class="txt">Mejorar nando-toolkit: detectar FastAPI (hoy da falso negativo)</span><span class="tag todo">herramientas</span></li>
+    <li><span class="chk"></span><span class="txt">Revisar añadir pre-commit (ruff+bandit) y CI de GitHub Actions cuando el código crezca — hoy no aporta (main.py pequeño, ruff y pytest ya verdes)</span><span class="tag todo">calidad</span></li>
   </ul>
 
   <div class="notes">
     <h3>Notas</h3>
-    <p>La web está accesible vía Cloudflare Tunnel. Los leads se guardan en <code>leads.db</code> (local, fuera de git). Cuando haya datos de contacto y WhatsApp reales, la web queda "terminada" y solo falta decidir el hosting definitivo.</p>
+    <p>La web está accesible vía Cloudflare Tunnel. Los leads se guardan en <code>leads.db</code> (local, fuera de git). Tests con <code>docker compose exec web python -m pytest</code>. Naming confirmado con Lau: <b>QREA'S Agency</b> (con Q y apóstrofo); el caso de éxito es <b>El Kazurro</b> (con K). Identidad visual intocada (trabajo Adobe aprobado). Tarifas editables en <code>main.py</code>. Análisis de negocio en <code>docs/analisis-modelo-negocio.md</code>. En desarrollo no se paga nada (email corporativo cuando haya dominio).</p>
   </div>
 
   <footer>QREA'S Agency · Backlog web corporativa · Actualizado 2026-08-02</footer>

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Proyectos | QREA'S Agency{% endblock %}
+{% block meta_description %}<meta name="description" content="Proyectos reales de consultoría para hostelería: estrategia, operativa, branding y tecnología con resultados medibles.">{% endblock %}
+{% block content %}
+
+<section class="page-hero">
+  <img class="page-hero__diamond" src="/static/img/diamond.png" alt="" aria-hidden="true">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Migas de pan"><a href="/">Inicio</a> · <span aria-current="page">Proyectos</span></nav>
+    <span class="eyebrow reveal">Casos de éxito</span>
+    <h1 class="reveal" data-delay="1">Proyectos reales, mejora real.</h1>
+    <p class="lead reveal" data-delay="2">Trabajamos con negocios de hostelería reales, desde dentro y con método. Estos son algunos proyectos en los que hemos intervenido y lo que logramos junto a los equipos.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cases">
+      <article class="case reveal">
+        <span class="case__tag">Estrategia · Marketing · Experiencia</span>
+        <h2 class="case__title">The Top</h2>
+        <p class="case__role">Local de hostelería</p>
+        <p class="case__text">Intervención integral con consultoría estratégica y de marketing digital, personalizada para el local. La renovación de imagen y de la experiencia del cliente se trabajó sobre la operativa real del negocio, no sobre ideas sueltas.</p>
+        <!-- CIFRA PENDIENTE DE CONFIRMACIÓN CON LAU (PDF fuente con encoding corrupto) -->
+        <div class="case__result">
+          <div class="case__metric">+35%<small>incremento del ticket medio</small></div>
+          <div class="case__metric">↑<small>mejora de la satisfacción del cliente</small></div>
+        </div>
+      </article>
+
+      <article class="case reveal" data-delay="1">
+        <span class="case__tag">Franquicia · Imagen · Crecimiento</span>
+        <h2 class="case__title">El Kazurro</h2>
+        <p class="case__role">Franquicia hostelera</p>
+        <p class="case__text">Trabajo de renovación de imagen y estrategia comercial sobre una franquicia en expansión. Se ordenó la operativa y se amplió el alcance del negocio, consolidando la base de clientes.</p>
+        <!-- CIFRA PENDIENTE DE CONFIRMACIÓN CON LAU (PDF fuente con encoding corrupto) -->
+        <div class="case__result">
+          <div class="case__metric">+20%<small>más ventas y clientes consolidados</small></div>
+          <div class="case__metric">+50%<small>expansión del alcance del negocio</small></div>
+        </div>
+      </article>
+
+      <article class="case reveal" data-delay="2">
+        <span class="case__tag">Operativa · Equipos</span>
+        <h2 class="case__title">El Patioh</h2>
+        <p class="case__role">Restaurante</p>
+        <p class="case__text">Mejora de la gestión de equipos y procesos. Se estandarizó la operativa de sala y cocina, se definieron roles y responsabilidades y se asentó la posición del local en su mercado.</p>
+        <div class="case__result">
+          <div class="case__metric">↑<small>equipos más coordinados y procesos estandarizados</small></div>
+        </div>
+      </article>
+    </div>
+
+    <p class="case-note reveal">Los resultados corresponden a proyectos anteriores y a la situación de cada negocio en su momento. Cada proyecto parte de su propia realidad; no ofrecemos resultados garantizados.</p>
+  </div>
+</section>
+
+<section class="section cta">
+  <div class="wrap">
+    <div class="cta__inner reveal">
+      <img class="cta__diamond" src="/static/img/diamond.png" alt="" aria-hidden="true">
+      <span class="eyebrow" style="justify-content:center">Tu proyecto puede ser el siguiente</span>
+      <h2>Hablemos de tu negocio y de cómo podemos ayudarte a funcionar mejor.</h2>
+      <p class="lead">Cuéntanos en qué punto está tu proyecto y descubre qué tipo de intervención encaja con tu realidad.</p>
+      <a class="btn btn--gold btn--lg" href="/contacto">Agenda una reunión <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -105,7 +105,7 @@
   <div class="feature-block">
     <h4>Incluye</h4>
     <ul class="feature-list"><li><span class="rhomb"></span><span>Automatización administrativa y operativa</span></li><li><span class="rhomb"></span><span>Lectura inteligente de documentos</span></li><li><span class="rhomb"></span><span>Agentes de voz</span></li><li><span class="rhomb"></span><span>Asistentes virtuales</span></li><li><span class="rhomb"></span><span>Sistemas de apoyo interno</span></li><li><span class="rhomb"></span><span>IA aplicada a atención y soporte</span></li><li><span class="rhomb"></span><span>Flujos automáticos entre herramientas</span></li></ul>
-    
+    <div class="objective"><b>Objetivo</b>Aumentar productividad, ahorrar tiempo y crear sistemas de trabajo más avanzados y mejor conectados.</div>
   </div>
 </div><div class="svc-detail reveal" id="s9">
   <div class="svc-detail__head">
@@ -117,9 +117,64 @@
   <div class="feature-block">
     <h4>Incluye</h4>
     <ul class="feature-list"><li><span class="rhomb"></span><span>Webs corporativas y de marca</span></li><li><span class="rhomb"></span><span>Landing pages</span></li><li><span class="rhomb"></span><span>Apps personalizadas</span></li><li><span class="rhomb"></span><span>Herramientas internas</span></li><li><span class="rhomb"></span><span>Soluciones conectadas al ecosistema del negocio</span></li></ul>
-    
+    <div class="objective"><b>Objetivo</b>Mejorar la presencia digital, la experiencia del cliente y la funcionalidad interna del negocio mediante herramientas hechas a medida.</div>
   </div>
-</div></div></section><section class="section cta">
+</div></div></section>
+
+<!-- ===================== PAQUETES Y TARIFAS ===================== -->
+<section class="section section--alt" id="tarifas">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <span class="eyebrow">Modelo de trabajo</span>
+      <h2>Paquetes y tarifas por segmento.</h2>
+      <p class="lead" style="margin-top:1rem">Tarifas orientativas, ajustables según el tamaño del negocio y su nivel de facturación. Cada paquete se adapta a la realidad del local; también trabajamos por servicios individuales.</p>
+    </div>
+
+    <div class="tiers">
+      {% for seg in segments %}
+      <details class="tier-acc reveal">
+        <summary class="tier-acc__head">
+          <span class="tier-acc__name"><span class="rhomb"></span>{{ seg.name }}</span>
+          <span class="tier-acc__price">{{ seg.tiers[0].price }} – {{ seg.tiers[-1].price }}</span>
+          <svg class="tier-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="tier-acc__body">
+          {% for tier in seg.tiers %}
+          <article class="tier-card">
+            <div class="tier-card__top">
+              <span class="tier-dot tier-dot--{{ tier.tone }}"></span>
+              <h3>{{ tier.level }}</h3>
+              <span class="tier-card__price">{{ tier.price }}</span>
+            </div>
+            <p class="tier-card__base">{% if tier.base %}Incluye lo del paquete {{ tier.base }} más:{% else %}Incluye:{% endif %}</p>
+            <ul class="tier-card__list">
+              {% for item in tier.includes %}
+              <li><span class="rhomb"></span><span>{{ item }}</span></li>
+              {% endfor %}
+            </ul>
+          </article>
+          {% endfor %}
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+
+    <div class="individual reveal">
+      <div class="individual__head">
+        <span class="eyebrow">Contratación flexible</span>
+        <h3>Servicios individuales</h3>
+        <p class="lead" style="margin-top:.6rem">Para clientes que solo necesiten un servicio concreto, con asesoría puntual.</p>
+      </div>
+      <ul class="individual__list">
+        {% for svc in individual %}
+        <li><span class="rhomb"></span><span>{{ svc.name }}</span><b>{{ svc.price }}</b></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section cta">
   <div class="wrap">
     <div class="cta__inner reveal">
       <img class="cta__diamond" src="/static/img/diamond.png" alt="" aria-hidden="true">
